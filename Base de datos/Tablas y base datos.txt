@@ -1,0 +1,68 @@
+create database vacas;
+
+
+create table vacas.usuario(
+id_usuario int not null auto_increment,
+contraseña varchar(10),
+telefono varchar(20),
+direccion varchar(30),
+nombre_empresa varchar(50),
+primary key(id_usuario));
+
+
+create table vacas.rel_usuario_param(
+id_rel_usuario_param int not null auto_increment,
+id_param int,
+id_registro int,
+primary key(id_rel_usuario_param));
+
+
+create table vacas.parametro(
+id_param int  not null auto_increment,
+descripcion varchar(1000),
+valor int,
+primary key(id_param));
+
+
+INSERT INTO `vacas`.`parametro`
+(`descripcion`,`valor`)
+VALUES('top registros',10);
+
+
+
+
+
+create table vacas.rel_param_registro(
+id_rel_param_registro int not null auto_increment,
+id_param int,
+id_regsitro int,
+primary key(id_rel_param_registro));
+
+
+
+
+
+create table vacas.registro(
+id_registro int not null auto_increment,
+temperatura_ambiente int,
+coordinacion int,
+respiraciones_por_minuto int,
+edad int,
+peso int,
+kg_por_dia int,
+lt_por_dia int,
+temp_corporal int,
+resutlado int,
+primary key(id_registro));
+
+
+create table vacas.coordinacion(
+id_coordinacion int  not null auto_increment,
+descripcion_coordinacion varchar(1000),
+primary key(id_coordinacion));
+
+
+create table vacas.resultado(
+id_resultado int not null auto_increment,
+descripcion_resultado int,
+primary key(id_resultado));
