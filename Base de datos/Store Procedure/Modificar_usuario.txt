@@ -1,0 +1,23 @@
+delimiter &&
+CREATE DEFINER=`root`@`localhost` PROCEDURE `modificar_usuario`(
+	entrada int,
+	id int,
+    nuevo varchar(20)
+)
+begin 
+DECLARE EXIT HANDLER FOR SQLEXCEPTION
+BEGIN
+    ROLLBACK;
+    SELECT 'An error has occurred, operation rollbacked and the stored procedure was terminated';
+END;
+start transaction;
+		if(entrada = 1)then
+        update vacas.usuario 
+        set telefono = nuevo where id_usuario = id;
+		end if;
+        if(entrada = 2)then
+        update vacas.usuario 
+        set direccion = nuevo where id_usuario = id;
+        end if;
+commit;
+end&&
